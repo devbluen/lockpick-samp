@@ -589,7 +589,10 @@ static stock HideLockPick(playerid) {
 
 */
 
-static stock TextDraw_SetPosition(playerid, PlayerText:playertextid, Float:x, Float:y) {
+static stock TextDraw_SetPosition(playerid, &PlayerText:playertextid, Float:x, Float:y) {
+
+    if(playertextid == INVALID_PLAYER_TEXT_DRAW)
+        return;
 
     new data[E_TEXTDRAW_DATA];
     data = e_TextdrawData[playerid][playertextid];  // create data backup
@@ -610,6 +613,7 @@ static stock TextDraw_SetPosition(playerid, PlayerText:playertextid, Float:x, Fl
     e_TextdrawData[playerid][textid] = data;                        // Rebuild data
     e_TextdrawData[playerid][textid][E_TEXTDRAW_DATA_POS][0] = x;   // Set new offsets
     e_TextdrawData[playerid][textid][E_TEXTDRAW_DATA_POS][1] = y;   // Set new offsets
+    playertextid = textid;
 }
 
 static stock TextDraw_GetPosition(playerid, PlayerText:playertextid, &Float:x, &Float:y = 0.0) {
