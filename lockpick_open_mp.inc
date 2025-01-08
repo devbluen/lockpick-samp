@@ -13,7 +13,7 @@
 #define        MAX_LOCKPICK_PINS        (8)
 
             // Includes
-#include <..\YSI-Includes\YSI_Coding\y_hooks>
+#include <YSI_Coding\y_hooks>
 
             // Forwards
 forward OnLockPick_Tick(playerid);
